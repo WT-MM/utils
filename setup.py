@@ -4,7 +4,7 @@
 
 import re
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description: str = f.read()
@@ -27,7 +27,7 @@ version: str = version_re.group(1)
 setup(
     name="maa",
     version=version,
-    description="The maa project",
+    description="Utilities for maa projects",
     author="Wesley Maa",
     url="https://github.com/WT-MM/utils",
     long_description=long_description,
@@ -36,7 +36,7 @@ setup(
     install_requires=requirements,
     tests_require=requirements_dev,
     extras_require={"dev": requirements_dev},
-    packages=["maa"],
+    packages=find_packages(),
     # entry_points={
     #     "console_scripts": [
     #         "maa.cli:main",

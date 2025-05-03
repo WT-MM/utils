@@ -1,3 +1,9 @@
 # maa
 
-Welcome to the maa project!
+Collection of useful utilities.
+
+## Installation
+
+```bash
+pip install maa
+```
