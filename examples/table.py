@@ -41,7 +41,7 @@ def main() -> None:
         {"data_key": "target", "header": "Target", "width": 8},
     ]
 
-    perf_table = format_table_log("Performance Metrics", perf_legend, perf_data)
+    perf_table = format_table_log("Performance Metrics", perf_legend, perf_data, include_row_separators=True)
     logger.info("\n%s", perf_table)
 
 

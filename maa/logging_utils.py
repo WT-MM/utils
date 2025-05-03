@@ -7,7 +7,7 @@ __all__ = ["format_table_log"]
 logger = logging.getLogger(__name__)
 
 
-def format_table_log(title: str, legend: list[dict], data: list[dict]) -> str:
+def format_table_log(title: str, legend: list[dict], data: list[dict], include_row_separators: bool = False) -> str:
     """Formats data into a string table based on a legend mapping keys to headers/widths."""
     if not data:
         return f"{title}\n(No data to display)"
@@ -31,7 +31,7 @@ def format_table_log(title: str, legend: list[dict], data: list[dict]) -> str:
 
     table_rows = [title, separator, header_str, separator]
 
-    for item in data:
+    for i, item in enumerate(data):
         row_parts = []
         for entry in legend:
             key = entry["data_key"]
@@ -72,6 +72,9 @@ def format_table_log(title: str, legend: list[dict], data: list[dict]) -> str:
             row_str = row_str[: len(header_str) - 2] + " |"
 
         table_rows.append(row_str)
+        if include_row_separators and i < len(data) - 1:
+            table_rows.append(separator)
+
     table_rows.append(separator)
 
     return "\n".join(table_rows)
